@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet  } from 'react-helmet-async';
  
-import PopularMenu from '../Home/PopularMenu';
+import MenuList from './../Shared/MenuList/MenuList';
 import img1 from "../../assets/menu/banner3.jpg"
 import img2 from "../../assets/menu/dessert-bg.jpeg"
 import img3 from "../../assets/menu/pizza-bg.jpg"
@@ -25,18 +25,18 @@ const Menu = () => {
         img1={img1}
       ></CTAParalax>
 
-    <PopularMenu
+    <MenuList
      heading={"TODAY'S OFFER"}
-     subHeading={"Don't miss"}view={"list"}></PopularMenu>
+     subHeading={"Don't miss"} category={"popular"}></MenuList>
       <CTAParalax
       title={"Desserts"}
       subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
         img1={img2}
       ></CTAParalax>
 
-    <PopularMenu
+    <MenuList
      heading={"Desserts"}
-     subHeading={"Don't miss"}view={"list"}></PopularMenu>
+     subHeading={"Don't miss"} category={"dessert"}></MenuList>
 
 
 <CTAParalax
@@ -45,9 +45,9 @@ const Menu = () => {
         img1={img3}
       ></CTAParalax>
 
-    <PopularMenu
+    <MenuList
      heading={"Pizza"}
-     subHeading={"Don't miss"}view={"list"}></PopularMenu>
+     subHeading={"Don't miss"} category={"pizza"}></MenuList>
 
 <CTAParalax
       title={"Salad"}
@@ -55,9 +55,9 @@ const Menu = () => {
         img1={img4}
       ></CTAParalax>
 
-    <PopularMenu
+    <MenuList
      heading={"Salad"}
-     subHeading={"Don't miss"}view={"list"}></PopularMenu>
+     subHeading={"Don't miss"} category={"salad"}></MenuList>
 
 <CTAParalax
       title={"Soup"}
@@ -65,9 +65,9 @@ const Menu = () => {
         img1={img5}
       ></CTAParalax>
 
-    <PopularMenu
+    <MenuList
      heading={"Soup"}
-     subHeading={"Don't miss"}view={"list"}></PopularMenu>
+     subHeading={"Don't miss"} category={"soup"}></MenuList>
 
 
  

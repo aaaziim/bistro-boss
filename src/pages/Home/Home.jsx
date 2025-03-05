@@ -18,11 +18,12 @@ const Home = () => {
       <Category></Category>
       <CTAHero></CTAHero>
       <PopularMenu heading={"FROM OUR MENU"} subHeading={"Check it out"} view={"list"}></PopularMenu>
-      <PopularMenu heading={"CHEF RECOMMENDS"} subHeading={"Should Try"} view={"card"}></PopularMenu>
-     
       <div className='bg-black mb-10'>
           <p className="text-2xl text-white text-center px-10 py-6">Call Us: +88 0192345678910</p>
       </div>
+      <PopularMenu heading={"CHEF RECOMMENDS"} subHeading={"Should Try"} view={"card"}></PopularMenu>
+     
+      
       <Featured></Featured>
       <Testimonials></Testimonials>
     </div>

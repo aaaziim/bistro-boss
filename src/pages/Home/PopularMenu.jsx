@@ -3,22 +3,17 @@ import React, { useEffect, useState } from 'react'
 import MenuItem from '../Shared/MenuItem/MenuItem'
 import SectionHeading from '../Shared/SectionHeading/SectionHeading'
 import Foodcard from '../Shared/FoodCard/Foodcard'
+import useMenu from '../../hooks/useMenu/useMenu'
  
 
 const PopularMenu = ({heading,subHeading, view}) => {
-    const [popularMenu, setPopularMenu] = useState([])
-    useEffect(()=>{
-        // fetch popular menu data from API and update state here
-        // example:
-        fetch('menu.json')
-         .then(response => response.json())
-         .then(data => {
-            const popularItems = data.filter(item=> item.category==='popular')
-            setPopularMenu(popularItems)
-         })
-         .catch(error => console.error('Error:', error));
-  
-    },[])
+   const [menu, loading] = useMenu();
+
+   if(loading) return <p>Loading</p>
+
+   const popularItems = menu.filter(item=> item.category==='popular')
+   const popularSalads = menu.filter(item=> item.category==='salad')
+
   return (
     <section className='my-10'>
           <SectionHeading
@@ -29,7 +24,7 @@ const PopularMenu = ({heading,subHeading, view}) => {
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 my-4'>
 
-      { popularMenu.map(item=>view ==="list"?<MenuItem key={item._id}
+      { popularItems.map(item=>view ==="list"?<MenuItem key={item._id}
       item={item}>
 
       </MenuItem>: "")}
@@ -37,7 +32,7 @@ const PopularMenu = ({heading,subHeading, view}) => {
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-4'>
 
-      { popularMenu.map(item=>view ==="card"?<Foodcard key={item._id}
+      { popularSalads.slice(0,3).map(item=>view ==="card"?<Foodcard key={item._id}
       item={item}></Foodcard>: "")}
 
     
