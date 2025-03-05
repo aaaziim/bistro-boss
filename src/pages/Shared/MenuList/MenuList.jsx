@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import SectionHeading from '../SectionHeading/SectionHeading';
 import MenuItem from '../MenuItem/MenuItem';
 import useMenu from '../../../hooks/useMenu/useMenu';
+import CTAParalax from '../CTAParalax/CTAParalax';
  
  
 
-const MenuList = ({heading,subHeading, category}) => {
+const MenuList = ({title, subTitle,  category, img}) => {
 
   const [menu, loading] = useMenu();
 
@@ -16,11 +17,20 @@ const MenuList = ({heading,subHeading, category}) => {
    
   return (
     <section className='my-10'>
-          <SectionHeading
-      subHeading={subHeading} 
-      heading={heading}>
-
-      </SectionHeading>
+          
+      <CTAParalax
+      title={title}
+      subTitle={subTitle}
+        img1={img}
+      ></CTAParalax>
+     
+     {
+      category ==="popular" &&  <SectionHeading
+            heading={"TODAY'S OFFER"}
+            subHeading={"Don't miss"}>
+      
+            </SectionHeading>
+     }
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 my-4'>
 
