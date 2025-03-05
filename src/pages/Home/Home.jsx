@@ -5,10 +5,15 @@ import CTAHero from './CTAHero'
 import PopularMenu from './PopularMenu'
 import Featured from './Featured'
 import Testimonials from './Testimonials'
-
+import { Helmet  } from 'react-helmet-async';
+ 
 const Home = () => {
   return (
     <div>
+         <Helmet >
+              <title>Bisto Boss | Home</title>
+            </Helmet>
+            
       <Banner></Banner>
       <Category></Category>
       <CTAHero></CTAHero>
