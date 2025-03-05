@@ -3,6 +3,8 @@ import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Menu from "../pages/Menu/Menu";
+import Registration from "../Registration/Registration";
+import Login from "../pages/Login/Login";
  
 const routes = createBrowserRouter([
     {
@@ -19,10 +21,14 @@ const routes = createBrowserRouter([
                 path:"/menu",
                 element:<Menu></Menu>
             },
-            // {
-            //     path:"/signup",
-            //     element:<SignUp></SignUp>
-            // },
+            {
+                path:"/signup",
+                element:<Registration></Registration>
+            },
+            {
+                path:"/signin",
+                element:<Login></Login>
+            },
             
             
            
