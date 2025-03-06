@@ -5,7 +5,7 @@ const useMenu = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/menu.json') // ✅ Ensure this path is correct
+        fetch('http://localhost:5000/menu') // ✅ Ensure this path is correct
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);

@@ -17,7 +17,7 @@ import SingleReview from './SingleReview';
 const Testimonials = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/review')
          .then(response => response.json())
          .then(data => setReviews(data))
          .catch(error => console.error('Error:', error))
