@@ -3,6 +3,7 @@ import SectionHeading from '../SectionHeading/SectionHeading';
 import MenuItem from '../MenuItem/MenuItem';
 import useMenu from '../../../hooks/useMenu/useMenu';
 import CTAParalax from '../CTAParalax/CTAParalax';
+import { Link } from 'react-router-dom';
  
  
 
@@ -14,7 +15,6 @@ const MenuList = ({title, subTitle,  category, img}) => {
 
   const items = menu.filter(item=> item.category===category)
 
-   
   return (
     <section className='my-10'>
           
@@ -43,7 +43,9 @@ const MenuList = ({title, subTitle,  category, img}) => {
  
     <div className='text-center'>
        
+         <Link to={`/order/${category}`}>
              <button className="btn btn-outline border-0 border-b-4 border-b-black text-center">Order Now</button>
+         </Link>
          
      
     </div>

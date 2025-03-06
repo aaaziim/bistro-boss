@@ -4,6 +4,7 @@ import MenuItem from '../Shared/MenuItem/MenuItem'
 import SectionHeading from '../Shared/SectionHeading/SectionHeading'
 import Foodcard from '../Shared/FoodCard/Foodcard'
 import useMenu from '../../hooks/useMenu/useMenu'
+import { Link } from 'react-router-dom'
  
 
 const PopularMenu = ({heading,subHeading, view}) => {
@@ -39,7 +40,7 @@ const PopularMenu = ({heading,subHeading, view}) => {
       </div>
     <div className='text-center'>
         {
-            view ==="list" &&   <button className="btn btn-outline border-0 border-b-4 border-b-black text-center">Order Now</button>
+            view ==="list" &&   <Link to="/order/salad"><button className="btn btn-outline border-0 border-b-4 border-b-black text-center">Order Now</button></Link>
         }
      
     </div>
