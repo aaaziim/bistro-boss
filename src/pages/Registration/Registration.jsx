@@ -5,58 +5,27 @@ import { useContext, useEffect } from "react";
 
 import toast from "react-hot-toast";
 import axios from "axios";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Registration = () => {
-  // const navigate = useNavigate()
-  //   const {createUser, signInWithGoogle, updateUserProfile,setUser, user, loading} = useContext(AuthContext)
 
-  //     useEffect(()=>{
-  //         if(user){
-  //           navigate("/")
-  //         }
-  //     }, [navigate, user])
+      const {user, createUser} = useContext(AuthContext)
 
+     const handleEmailSignIn = (e) =>{
+      e.preventDefault();
+      const email = e.target.email.value;
+      const name = e.target.name.value;
+      const password = e.target.password.value;
+      const photoURL = e.target.photo.value;
+      createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user)
+      })
 
-  //   const handleGoogleSignIn = async() =>{
-
-  //     try {
-  //       const result = await signInWithGoogle()
-  //       const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials:true})
+   } 
   
-  //       console.log(data)
-  //       toast.success('Signin Successful')
-  //     }
-  //     catch(err){
-  //       console.log(err)
-  //       toast.error(err?.message)
-  //     }
-  
-  //   }
 
-
-  //   const handleEmailSignIn = async(e) =>{
-  //     e.preventDefault();
-  //     const email = e.target.email.value;
-  //     const name = e.target.name.value;
-  //     const password = e.target.password.value;
-  //     const photoURL = e.target.photo.value;
-
-  //    try{
-  //    const result = await createUser(email,password)
-  //    await updateUserProfile(name, photoURL)
-  //    setUser({...result?.user, photoURL:photoURL, displayName:name})
-  //    const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials:true})
-  //    console.log(data)
-  //    navigate("/")
-  //    toast.success('Signin Successful')
-  //    }
-  //    catch(err){
-  //     console.log(err)
-  //     toast.error(err?.message)
-  //   }
-  //   } 
-  
-  //   if(user || loading) return
     return (
       <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-4'>
         <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
@@ -109,7 +78,7 @@ const Registration = () => {
   
               <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
             </div>
-            <form >
+            <form onSubmit={handleEmailSignIn} >
               <div className='mt-4'>
                 <label
                   className='block mb-2 text-sm font-medium text-gray-600 '
@@ -188,7 +157,7 @@ const Registration = () => {
               <span className='w-1/5 border-b  md:w-1/4'></span>
   
               <Link
-                to='/login'
+                to='/signin'
                 className='text-xs text-gray-500 uppercase  hover:underline'
               >
                 or sign in

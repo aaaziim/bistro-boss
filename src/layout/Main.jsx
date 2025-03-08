@@ -1,15 +1,20 @@
 import React from 'react'
 import Navbar from '../pages/Shared/NavBar/NavBar'
 import Footer from '../pages/Shared/Footer/Footer'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 const Main = () => {
+  const location = useLocation()
+  const noHeaderFooter = location.pathname.includes(('signin'))
   return (
     <div className='container mx-auto'>
-    <Navbar></Navbar>
+      {
+        noHeaderFooter ||     <Navbar></Navbar>
+      }
+
       <Outlet></Outlet>
-      <Footer></Footer>
-    
+{    noHeaderFooter ||   <Footer></Footer>
+    }
   </div>
   )
 }
