@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../provider/AuthProvider'
+
+import useCart from '../../../hooks/useMenu/useCart';
 
 const Navbar = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+
+
+ const [cart] = useCart()
+
+  const handleLogOut =() =>{
+    logOut()
+    .then(()=>{})
+    .catch((err)=>{console.log(err)})
+  }
     const navOptions = <>
   <li>
     <Link to="/">Home</Link>
@@ -13,12 +27,30 @@ const Navbar = () => {
       <li>
       <Link to="/order/salad">Order</Link>
       </li>
-      <li>
+     {
+      user? (
+        <>
+       
+        <li>
+          <Link to="/dashboard/cart"> 
+  Cart <div className="badge badge-sm badge-secondary">{cart.length}</div>
+ </Link>
+        </li>
+        <li>
+          <Link onClick={handleLogOut}  >Logout</Link>
+        </li>
+        </>
+      ) : (
+        <>
+    <li>
       <Link to="/signin">Sign In</Link>
       </li>
       <li>
       <Link to="/signup">Sign Up</Link>
       </li>
+        </>
+      )
+     }
     </>
   return (
     <div>
@@ -30,7 +62,7 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
+        className="menu menu-sm dropdown-content bg-black rounded-box z-1 mt-3 w-52 p-2 shadow text-white">
        {navOptions}
       </ul>
     </div>

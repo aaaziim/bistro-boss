@@ -2,15 +2,31 @@ import { Link, useNavigate } from "react-router-dom";
 import bgImage from "../../assets/images/register.jpg"
 import logo from "../../assets/images/logo.png"
 import { useContext, useEffect } from "react";
-
-import toast from "react-hot-toast";
-import axios from "axios";
+ 
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Registration = () => {
 
-      const {user, createUser} = useContext(AuthContext)
+      const {user, createUser, signInWithGoogle,updateProfile} = useContext(AuthContext)
+      const navigate = useNavigate()
+  const destination = location.state || "/"
+      const handleGoogleSignIn = async() =>{
 
+        try {
+          const result = await signInWithGoogle()
+         
+    
+          console.log(result)
+    
+          navigate(destination, {replace:true})
+         
+        }
+        catch(err){
+          console.log(err)
+         
+        }
+    
+      }
      const handleEmailSignIn = (e) =>{
       e.preventDefault();
       const email = e.target.email.value;
@@ -20,7 +36,10 @@ const Registration = () => {
       createUser(email, password)
       .then(result => {
         const user = result.user;
-        console.log(user)
+        updateProfile(name, photoURL)
+        .then(()=>{console.log('User updated')})
+        .catch(err => console.log(err))
+        navigate(destination, {replace:true})
       })
 
    } 
@@ -64,7 +83,7 @@ const Registration = () => {
                 </svg>
               </div>
   
-              <span className='w-5/6 px-4 py-3 font-bold text-center'>
+              <span onClick={handleGoogleSignIn} className='w-5/6 px-4 py-3 font-bold text-center'>
                 Sign in with Google
               </span>
             </div>
